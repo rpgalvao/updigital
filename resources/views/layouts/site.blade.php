@@ -20,10 +20,13 @@
         <header>
             @include('layouts._site._navbar')
         </header>
-
-        @yield('content')
-
-        @include('layouts._site._footer')
+        <main>
+            @yield('content')
+        </main>
+        <footer>
+            @include('layouts._site._footer')
+        </footer>
+        
         <!-- JavaScripts -->
         <script type="text/javascript" src="{{ asset('lib/jquery/dist/jquery.js') }}"></script>
         <script type="text/javascript" src="{{ asset('lib/materialize/dist/js/materialize.js') }}"></script>
