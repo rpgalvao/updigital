@@ -8,7 +8,7 @@
 				<div class="nav-wrapper blue-grey lighten-3">
 					<div class="col s12">
 					<a href="{{route('admin.principal')}}" class="breadcrumb">Início</a>
-					<a href="#" class="breadcrumb">Usuários</a>
+					<a class="breadcrumb">Usuários</a>
 					</div>
 				</div>
 			</nav>
@@ -30,8 +30,8 @@
 							<td>{{$usuario->name}}</td>
 							<td>{{$usuario->email}}</td>
 							<td>
-								<a class="btn blue-grey" href="#">Editar</a>
-								<a class="btn red" href="#">Apagar</a>
+								<a class="btn blue-grey" href="{{route('admin.usuarios.editar', $usuario->id)}}">Editar</a>
+								<a class="btn red" href="javascript: if(confirm('Deseja deletar esse usuário?')){window.location.href = '{{route('admin.usuarios.deletar', $usuario->id)}}'}">Apagar</a>
 							</td>
 						</tr>
 					@endforeach

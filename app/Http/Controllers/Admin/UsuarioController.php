@@ -50,4 +50,31 @@ class UsuarioController extends Controller
         \Session::flash('mensagem', ['msg' => 'Usuário cadastrado com sucesso!', 'class' => 'light-green white-text']);
         return redirect()->route('admin.usuarios');
     }
+
+    public function editar($id)
+    {
+        $usuario = User::find($id);
+        return view('admin.usuarios.editar', compact('usuario'));
+    }
+
+    public function atualizar(Request $req, $id)
+    {
+        $usuario = User::find($id);
+        $dados = $req->all();
+        if (isset($dados['password']) && strlen($dados['password']) > 5) {
+            $dados['password'] = bcrypt($dados['password']);
+        } else {
+            unset($dados['password']);
+        }
+        $usuario->update($dados);
+        \Session::flash('mensagem', ['msg' => 'Usuário atualizado com sucesso!', 'class' => 'light-green white-text']);
+        return redirect()->route('admin.usuarios');
+    }
+
+    public function deletar($id)
+    {
+        User::find($id)->delete();
+        \Session::flash('mensagem', ['msg' => 'Usuário removido com sucesso!', 'class' => 'light-green white-text']);
+        return redirect()->route('admin.usuarios');
+    }
 }
