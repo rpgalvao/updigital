@@ -15,9 +15,7 @@ Route::get('/', ["as" => "site.home", function(){
     return view('site.home');
 }]);
 
-Route::get('/sobre', ["as" => "site.sobre", function(){
-    return view('site.sobre');
-}]);
+Route::get('/sobre', ["as" => "site.sobre", "uses" => "Site\PaginaController@sobre"]);
 
 Route::get('/contato', ["as" => "site.contato", function(){
     return view('site.contato');
@@ -51,4 +49,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('/admin/usuarios/atualizar/{id}', ['as' => 'admin.usuarios.atualizar', 'uses' => 'Admin\UsuarioController@atualizar']);
 
 	Route::get('/admin/usuarios/deletar/{id}', ['as' => 'admin.usuarios.deletar', 'uses' => 'Admin\UsuarioController@deletar']);
+
+	Route::get('/admin/paginas', ['as' => 'admin.paginas', 'uses' => 'Admin\PaginaController@index']);
+
+	Route::get('/admin/paginas/editar/{id}', ['as' => 'admin.paginas.editar', 'uses' => 'Admin\PaginaController@editar']);
+
+	Route::put('/admin/paginas/atualizar/{id}', ['as' => 'admin.paginas.atualizar', 'uses' => 'Admin\PaginaController@atualizar']);
 });
