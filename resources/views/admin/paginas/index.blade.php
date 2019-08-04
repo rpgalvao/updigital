@@ -29,7 +29,7 @@
 						<tr>
 							<td>{{$pagina->id}}</td>
 							<td>{{$pagina->titulo}}</td>
-							<td>{{$pagina->descricao}}</td>
+							<td><?php echo substr($pagina->descricao, 0, 25);?></td>
 							<td>{{$pagina->tipo}}</td>
 							<td>
 								<a class="btn blue-grey" href="{{route('admin.paginas.editar', $pagina->id)}}">Editar</a>
