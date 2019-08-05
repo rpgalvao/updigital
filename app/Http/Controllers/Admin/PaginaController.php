@@ -19,6 +19,32 @@ class PaginaController extends Controller {
 	}
 
 	public function atualizar(Request $req, $id) {
-		# code...
+		$dados = $req->all();
+		$pagina = Pagina::find($id);
+		$pagina->titulo = trim($dados['titulo']);
+		$pagina->descricao = trim($dados['descricao']);
+		$pagina->texto = trim($dados['texto']);
+		if(isset($dados['email'])){
+			$pagina->email = trim($dados['email']);
+		}
+		if(isset($dados['mapa']) && trim($dados['mapa']) != ''){
+			$pagina->mapa = trim($dados['mapa']);
+		}else{
+			$pagina->mapa = null;
+		}
+		$file = $req->file('imagem');
+		if($file){
+			$rand = rand(11111, 99999);
+			$diretorio = "img/paginas/".$id."/";
+			$ext = $file->guessClientExtension();
+			$nomeArquivo = "_img_".$rand.".".$ext;
+			$file->move($diretorio, $nomeArquivo);
+			$pagina->imagem = $diretorio.'/'.$nomeArquivo;
+		}
+		$pagina->update();
+
+		\Session::flash('mensagem', ['msg' => 'Registro atualizado com sucesso!', 'class' => 'green white-text']);
+
+		return redirect()->route('admin.paginas');
 	}
 }
