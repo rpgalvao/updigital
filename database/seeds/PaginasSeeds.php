@@ -27,6 +27,24 @@ class PaginasSeeds extends Seeder
         $pgSobre->tipo = "sobre";
         $pgSobre->save();
 
-        echo "Pagina 'Sobre' criada com sucesso!</br>";
+        echo "Pagina 'Sobre' criada com sucesso!<br/>";
+
+        $exists = Pagina::where('tipo','=','contato')->count();
+        if($exists){
+            $pgContato = Pagina::where('tipo','=','contato')->first();
+        }else{
+            $pgContato = new Pagina();
+        }
+
+        $pgContato->titulo = "Entre em contato";
+        $pgContato->descricao = "Preencha o formulário!";
+        $pgContato->texto = "Entre em contato com a empresa";
+        $pgContato->email = "renatopgalvao@gmail.com";
+        $pgContato->imagem = "img/modelo_img_home.jpg";
+        //$pgContato->mapa = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230483.77483005798!2d-49.43022493137636!3d-25.494739832496823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce35351cdb3dd%3A0x6d2f6ba5bacbe809!2sCuritiba%2C+PR!5e0!3m2!1spt-BR!2sbr!4v1564655302882!5m2!1spt-BR!2sbr" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>';
+        $pgContato->tipo = "contato";
+        $pgContato->save();
+
+        echo "<br/>Pagina 'Contato' criada com sucesso!<br/>";
     }
 }

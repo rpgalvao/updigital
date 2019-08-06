@@ -8,10 +8,19 @@
     </div>
     <div class="row section">
         <div class="col s12 m5">
-            <img class="responsive-img" src="{{ asset('img/modelo_img_home.jpg') }}" alt="Imagem do sobre">
+            @if(isset($pagina->mapa))
+                <div class="video-container">
+                    {!! $pagina->mapa !!}
+                </div>
+            @else
+                <img class="responsive-img" src="{{ asset($pagina->imagem) }}" alt="Imagem do contato">
+            @endif
         </div>
         <div class="col s12 m7">
-            <form action="#" class="col s12">
+            <h4>{{ $pagina->titulo }}</h4>
+            <blockquote style="text-align: justify;">{{ $pagina->descricao }}</blockquote>
+            <form action="{{ route('site.contato.enviar') }}" method="POST" class="col s12">
+                {{ csrf_field() }}
                 <div class="input-field">
                     <input type="text" name="nome" class="validate" placeholder="Nome">
                 </div>
