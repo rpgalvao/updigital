@@ -22,14 +22,14 @@ class PaginaController extends Controller
     	return view('site.contato', compact('pagina'));
     }
 
-    public function enviarContato(Request $req)
+    public function enviarContato(Request $request)
     {
     	$pagina = Pagina::where('tipo', '=', 'contato')->first();
     	$email = $pagina->email;
 
-    	\Mail::send('emails.contato', ['request' => $req], function($msg) use ($req, $email){
-    		$msg->from($req['email'], $req['nome']);
-    		$msg->replyTo($req['email'], $req['nome']);
+    	\Mail::send('emails.contato', ['request' => $request], function($msg) use ($request, $email){
+    		$msg->from($request['email'], $request['nome']);
+    		$msg->replyTo($request['email'], $request['nome']);
     		$msg->subject('Contato do Site');
     		$msg->to($email, 'Contato Memphis');
     	});
