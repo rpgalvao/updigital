@@ -16,6 +16,7 @@
                             <li><a href="{{ route('admin.paginas') }}">Páginas</a></li>
                             <li><a href="{{ route('admin.tipos') }}">Tipos de Imóveis</a></li>
                             <li><a href="{{ route('admin.cidades') }}">Cidades</a></li>
+                            <li><a href="{{ route('admin.imoveis') }}">Lista de Imóveis</a></li>
                         </ul>
                 @endif
             </ul>
@@ -29,6 +30,7 @@
                     <li><a href="{{ route('admin.login.sair') }}">Sair</a></li>
                     <li><a href="{{ route('admin.tipos') }}">Tipos de Imóveis</a></li>
                     <li><a href="{{ route('admin.cidades') }}">Cidades</a></li>
+                    <li><a href="{{ route('admin.imoveis') }}">Lista de Imóveis</a></li>
                     <li><a href="#">{{ Auth::user()->name }}</a></li>
                 @endif
             </ul>

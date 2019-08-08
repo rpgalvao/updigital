@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Cidade;
+use App\Imovel;
 
 class CidadeController extends Controller
 {
@@ -53,6 +54,10 @@ class CidadeController extends Controller
 
     public function deletar($id)
     {
+        if(Imovel::where('cidade_id', '=', $id)->count()){
+            \Session::flash('mensagem', ['msg' => 'Impossivel deletar essa cidade pois possui imóveis vinculados a ela. Delete primeiro todos os imóveis dessa cidade.', 'class' => 'red lighten-2 white-text']);
+            return redirect()->route('admin.cidades');
+        }
         Cidade::find($id)->delete();
         \Session::flash('mensagem', ['msg' => 'Registro removido com sucesso!', 'class' => 'light-green white-text']);
         return redirect()->route('admin.cidades');
