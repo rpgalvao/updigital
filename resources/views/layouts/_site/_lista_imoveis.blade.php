@@ -9,7 +9,7 @@
         <div class="col s12 m3">
             <div class="card">
                 <div class="card-image">
-                    <a href="{{ route('site.imovel', [$imovel->id, str_slug($imovel->titulo, '-')]) }}"><img src="{{ asset($imovel->imagem) }}" alt="{{ $imovel->titulo }}"></a>
+                    <a href="{{ route('site.imovel', [$imovel->id, str_slug($imovel->titulo, '-')]) }}"><img src="{{ asset($imovel->imagem) }}" alt="{{ $imovel->titulo }}" height="150"></a>
                 </div>
                 <div class="card-content">
                     <p><b class="deep-orange-text darkeen-1">{{ strtoupper($imovel->status) }}</b></p>

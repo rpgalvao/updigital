@@ -6,11 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Imovel;
+use App\Galerias;
 
 class ImovelController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('site.imovel');
+        $imovel = Imovel::find($id);
+        $galeria = $imovel->galeria()->orderBy('order')->get();
+        $direcaoTexto = ['center-align', 'left-align', 'right-align'];
+        //dd($imovel, $galeria);
+        return view('site.imovel', compact('imovel', 'galeria', 'direcaoTexto'));
     }
 }
