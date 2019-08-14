@@ -8,7 +8,7 @@
         <label>Descrição da Imagem</label>
     </div>
     <div class="input-field">
-        <input type="text" name="ordem" class="validate" value="{{isset($registro->ordem) ? $registro->ordem : ''}}">
+        <input type="text" name="order" class="validate" value="{{isset($registro->order) ? $registro->order : ''}}">
         <label>Ordem das Imagens</label>
     </div>
     <div class="row">

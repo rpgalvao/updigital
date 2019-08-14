@@ -38,6 +38,7 @@
 							<td><img src="{{asset($registro->imagem)}}" width="100" alt="Imagem do imóvel"></td>
 							<td>{{$registro->publicar}}</td>
 							<td>
+								<a class="btn blue-grey" href="{{route('admin.galerias', $registro->id)}}">Imagens</a>
 								<a class="btn blue-grey" href="{{route('admin.imoveis.editar', $registro->id)}}">Editar</a>
 								<a class="btn red" href="javascript: if(confirm('Deseja deletar esse imóvel?')){window.location.href = '{{route('admin.imoveis.deletar', $registro->id)}}'}">Apagar</a>
 							</td>
