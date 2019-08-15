@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ImovelController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/admin/galerias/_form.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/admin/imoveis/_form.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/admin/slides/_form.blade.php" charset="UTF-8" />
   </component>
 </project>
