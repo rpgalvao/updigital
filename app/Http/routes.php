@@ -21,6 +21,8 @@ Route::post('/contato/enviar', ["as" => "site.contato.enviar", "uses" => "Site\P
 
 Route::get('/imovel/{id}/{titulo?}', ["as" => "site.imovel", "uses" => "Site\ImovelController@index"]);
 
+Route::get('/busca', ["as" => "site.busca", "uses" => "Site\HomeController@busca"]);
+
 Route::get('/admin/login', ["as" => "admin.login", function(){
 	return view('admin.login.index');
 }]);
@@ -111,4 +113,22 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('/admin/slides/atualizar/{id}', ['as' => 'admin.slides.atualizar', 'uses' => 'Admin\SlideController@atualizar']);
 
 	Route::get('/admin/slides/deletar/{id}', ['as' => 'admin.slides.deletar', 'uses' => 'Admin\SlideController@deletar']);
+
+	Route::get('/admin/papel', ['as' => 'admin.papel', 'uses' => 'Admin\PapelController@index']);
+
+	Route::get('/admin/papel/adicionar', ['as' => 'admin.papel.adicionar', 'uses' => 'Admin\PapelController@adicionar']);
+
+	Route::post('/admin/papel/salvar', ['as' => 'admin.papel.salvar', 'uses' => 'Admin\PapelController@salvar']);
+
+	Route::get('/admin/papel/editar/{id}', ['as' => 'admin.papel.editar', 'uses' => 'Admin\PapelController@editar']);
+
+	Route::put('/admin/papel/atualizar/{id}', ['as' => 'admin.papel.atualizar', 'uses' => 'Admin\PapelController@atualizar']);
+
+	Route::get('/admin/papel/deletar/{id}', ['as' => 'admin.papel.deletar', 'uses' => 'Admin\PapelController@deletar']);
+
+	Route::get('/admin/papel/permissao/{id}', ['as' => 'admin.papel.permissao', 'uses' => 'Admin\PapelController@permissao']);
+
+	Route::post('/admin/papel/permissao/{id}/salvar', ['as' => 'admin.papel.permissao.salvar', 'uses' => 'Admin\PapelController@salvarPermissao']);
+
+	Route::get('/admin/papel/permissao/{id}/remover/{id_permissao}', ['as' => 'admin.papel.permissao.remover', 'uses' => 'Admin\PapelController@removerPermissao']);
 });

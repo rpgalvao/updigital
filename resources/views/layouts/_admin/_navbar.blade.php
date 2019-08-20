@@ -18,6 +18,7 @@
                             <li><a href="{{ route('admin.cidades') }}">Cidades</a></li>
                             <li><a href="{{ route('admin.imoveis') }}">Lista de Imóveis</a></li>
                             <li><a href="{{ route('admin.slides') }}">Lista de Slides</a></li>
+                            <li><a href="{{ route('admin.papel') }}">Lista de Cargos</a></li>
                         </ul>
                 @endif
             </ul>
@@ -33,6 +34,7 @@
                     <li><a href="{{ route('admin.cidades') }}">Cidades</a></li>
                     <li><a href="{{ route('admin.imoveis') }}">Lista de Imóveis</a></li>
                     <li><a href="{{ route('admin.slides') }}">Lista de Slides</a></li>
+                    <li><a href="{{ route('admin.papel') }}">Lista de Cargos</a></li>
                     <li><a href="#">{{ Auth::user()->name }}</a></li>
                 @endif
             </ul>

@@ -24,6 +24,8 @@
         </div>
     @endforeach
 </div>
+@if($paginacao)
 <div align="center" class="row">
     {{ $imoveis->links() }}
 </div>
+@endif
