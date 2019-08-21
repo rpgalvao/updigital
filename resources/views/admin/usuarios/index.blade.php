@@ -31,6 +31,7 @@
 							<td>{{$usuario->email}}</td>
 							<td>
 								<a class="btn blue-grey" href="{{route('admin.usuarios.editar', $usuario->id)}}">Editar</a>
+								<a class="btn blue-grey" href="{{route('admin.usuarios.papel', $usuario->id)}}">Cargos</a>
 								<a class="btn red" href="javascript: if(confirm('Deseja deletar esse usuário?')){window.location.href = '{{route('admin.usuarios.deletar', $usuario->id)}}'}">Apagar</a>
 							</td>
 						</tr>

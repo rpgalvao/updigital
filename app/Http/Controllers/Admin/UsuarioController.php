@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
+use App\Papel;
 
 class UsuarioController extends Controller
 {
@@ -76,5 +77,29 @@ class UsuarioController extends Controller
         User::find($id)->delete();
         \Session::flash('mensagem', ['msg' => 'Usuário removido com sucesso!', 'class' => 'light-green white-text']);
         return redirect()->route('admin.usuarios');
+    }
+
+    public function papel($id)
+    {
+        $usuario = User::find($id);
+        $papeis = Papel::all();
+        return view('admin.usuarios.papel', compact('usuario', 'papeis'));
+    }
+
+    public function salvarPapel(Request $request, $id)
+    {
+        $usuario = User::find($id);
+        $dados = $request->all();
+        $papel = Papel::find($dados['papel_id']);
+        $usuario->adicionaPapel($papel);
+        return redirect()->back();
+    }
+
+    public function removerPapel($id, $papel_id)
+    {
+        $usuario = User::find($id);
+        $papel = Papel::find($papel_id);
+        $usuario->removePapel($papel);
+        return redirect()->back();
     }
 }
