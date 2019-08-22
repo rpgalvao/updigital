@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Papel;
+use App\Permissao;
 
 class PapelController extends Controller
 {
@@ -52,5 +53,28 @@ class PapelController extends Controller
         }
         Papel::find($id)->delete();
         return redirect()->route('admin.papel');
+    }
+
+    public function permissao($id)
+    {
+        $papel = Papel::find($id);
+        $permissoes = Permissao::all();
+        return view('admin.papel.permissao', compact('papel', 'permissoes'));
+    }
+
+    public function salvarPermissao(Request $request, $id)
+    {
+        $papel = Papel::find($id);
+        $permissao = Permissao::find($request['id_permissao']);
+        $papel->adicionarPermissao($permissao);
+        return redirect()->back();
+    }
+
+    public function removerPermissao($id, $id_permissao)
+    {
+        $papel = Papel::find($id);
+        $permissao = Permissao::find($id_permissao);
+        $papel->removerPermissao($permissao);
+        return redirect()->back();
     }
 }
