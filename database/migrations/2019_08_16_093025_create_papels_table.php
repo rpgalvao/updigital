@@ -19,7 +19,7 @@ class CreatePapelsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('papel_descricao', function (Blueprint $table) {
+        Schema::create('papel_permissao', function (Blueprint $table) {
             $table->integer('permissao_id')->unsigned();
             $table->integer('papel_id')->unsigned();
             $table->foreign('permissao_id')->references('id')->on('permissaos')->onDelete('cascade');
@@ -43,6 +43,6 @@ class CreatePapelsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('papels');
+        Schema::drop('papels', 'papel_permissao', 'papel_user');
     }
 }

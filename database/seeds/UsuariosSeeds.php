@@ -12,7 +12,7 @@ class UsuariosSeeds extends Seeder
      */
     public function run()
     {
-        if(User::where('email', '=', 'admin@mail.com')){
+        if(User::where('email', '=', 'admin@mail.com')->count()){
             $usuario = User::where('email', '=', 'admin@mail.com')->first();
             $usuario->name = "Renato Galvao";
             $usuario->email = "admin@mail.com";

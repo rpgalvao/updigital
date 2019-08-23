@@ -67,7 +67,7 @@
 </div>
 <div class="input-field">
     <textarea name="mapa" class="materialize-textarea">
-        {{isset($registro->mapa) ? $registro->mapa : 'Cole o iframe do Google Maps' }}
+        {{isset($registro->mapa) ? $registro->mapa : '' }}
     </textarea>
     <label>Mapa</label>
 </div>
