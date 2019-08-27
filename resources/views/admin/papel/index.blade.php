@@ -31,9 +31,11 @@
 							<td>{{$registro->descricao}}</td>
 							<td>
 								@if($registro->nome == 'admin')
+									<a class="btn blue-grey disabled">Permissões</a>
 									<a class="btn blue-grey disabled">Editar</a>
 									<a class="btn red disabled">Apagar</a>
 								@else
+									<a class="btn blue-grey" href="{{route('admin.papel.permissao', $registro->id)}}">Permissões</a>
 									<a class="btn blue-grey" href="{{route('admin.papel.editar', $registro->id)}}">Editar</a>
 									<a class="btn red" href="javascript: if(confirm('Deseja deletar esse registro?')){window.location.href = '{{route('admin.papel.deletar', $registro->id)}}'}">Apagar</a>
 								@endif
