@@ -12,7 +12,9 @@
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id="dropdown1" class="dropdown-content">
                             <li><a href="#">{{ Auth::user()->name }}</a></li>
-                            <li><a href="{{ route('admin.usuarios') }}">Usuários</a></li>
+                            @can('usuario_listar')
+                                <li><a href="{{ route('admin.usuarios') }}">Usuários</a></li>
+                            @endcan
                             <li><a href="{{ route('admin.paginas') }}">Páginas</a></li>
                             <li><a href="{{ route('admin.tipos') }}">Tipos de Imóveis</a></li>
                             <li><a href="{{ route('admin.cidades') }}">Cidades</a></li>
@@ -26,7 +28,7 @@
                 <li><a target="_blank" href="{{ route('site.home') }}">Site</a></li>
                 @if(Auth::guest())
                     <li><a href="{{ route('admin.login') }}">Login</a></li>
-                @else                    
+                @else
                     <li><a href="{{ route('admin.usuarios') }}">Usuários</a></li>
                     <li><a href="{{ route('admin.paginas') }}">Páginas</a></li>
                     <li><a href="{{ route('admin.login.sair') }}">Sair</a></li>
