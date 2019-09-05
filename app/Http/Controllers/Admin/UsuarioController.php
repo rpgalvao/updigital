@@ -35,10 +35,18 @@ class UsuarioController extends Controller {
 	}
 
 	public function adicionar() {
+		if(!auth()->user()->can('usuario_adicionar')){            
+            return redirect()->route('admin.principal');
+        }
+
 		return view('admin.usuarios.adicionar');
 	}
 
 	public function salvar(Request $req) {
+		if(!auth()->user()->can('usuario_adicionar')){            
+            return redirect()->route('admin.principal');
+        }
+
 		$dados             = $req->all();
 		$usuario           = new User;
 		$usuario->name     = $dados['name'];
@@ -50,11 +58,19 @@ class UsuarioController extends Controller {
 	}
 
 	public function editar($id) {
+		if(!auth()->user()->can('usuario_editar')){            
+            return redirect()->route('admin.principal');
+        }
+
 		$usuario = User::find($id);
 		return view('admin.usuarios.editar', compact('usuario'));
 	}
 
 	public function atualizar(Request $req, $id) {
+		if(!auth()->user()->can('usuario_editar')){            
+            return redirect()->route('admin.principal');
+        }
+
 		$usuario = User::find($id);
 		$dados   = $req->all();
 		if (isset($dados['password']) && strlen($dados['password']) > 5) {
@@ -68,18 +84,30 @@ class UsuarioController extends Controller {
 	}
 
 	public function deletar($id) {
+		if(!auth()->user()->can('usuario_deletar')){            
+            return redirect()->route('admin.principal');
+        }
+
 		User::find($id)->delete();
 		\Session::flash('mensagem', ['msg' => 'Usuário removido com sucesso!', 'class' => 'light-green white-text']);
 		return redirect()->route('admin.usuarios');
 	}
 
 	public function papel($id) {
+		if(!auth()->user()->can('usuario_editar')){            
+            return redirect()->route('admin.principal');
+        }
+
 		$usuario = User::find($id);
 		$papeis  = Papel::all();
 		return view('admin.usuarios.papel', compact('usuario', 'papeis'));
 	}
 
 	public function salvarPapel(Request $request, $id) {
+		if(!auth()->user()->can('usuario_editar')){            
+            return redirect()->route('admin.principal');
+        }
+
 		$usuario = User::find($id);
 		$dados   = $request->all();
 		$papel   = Papel::find($dados['papel_id']);
@@ -88,6 +116,10 @@ class UsuarioController extends Controller {
 	}
 
 	public function removerPapel($id, $papel_id) {
+		if(!auth()->user()->can('usuario_editar')){            
+            return redirect()->route('admin.principal');
+        }
+        
 		$usuario = User::find($id);
 		$papel   = Papel::find($papel_id);
 		$usuario->removePapel($papel);

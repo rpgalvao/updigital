@@ -1,5 +1,5 @@
 <nav>
-    <div class="nav-wrapper blue-grey">
+    <div class="nav-wrapper upcolor">
         <div class="container">
             <a href="{{ route('admin.principal') }}" class="brand-logo">SysAdmin</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -20,7 +20,9 @@
                             <li><a href="{{ route('admin.cidades') }}">Cidades</a></li>
                             <li><a href="{{ route('admin.imoveis') }}">Lista de Imóveis</a></li>
                             <li><a href="{{ route('admin.slides') }}">Lista de Slides</a></li>
-                            <li><a href="{{ route('admin.papel') }}">Lista de Cargos</a></li>
+                            @can('papel_listar')
+                                <li><a href="{{ route('admin.papel') }}">Lista de Cargos</a></li>
+                            @endcan
                         </ul>
                 @endif
             </ul>

@@ -30,7 +30,7 @@
                 <div class="input-field">
                     <textarea name="msg" class="materialize-textarea" placeholder="Mensagem"></textarea>
                 </div>
-                <button class="btn blue-grey">Enviar</button>
+                <button class="btn upcolor">Enviar</button>
             </form>
         </div>
     </div>

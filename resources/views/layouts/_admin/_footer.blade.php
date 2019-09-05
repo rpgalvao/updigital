@@ -1,4 +1,4 @@
-<footer class="page-footer blue-grey">
+<footer class="page-footer upcolor">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-copyright">
+    <div class="footer-copyright blue-grey darken-3">
         <div class="container">
             © 2019 Copyright SysAdmin
             @if(!Auth::guest())

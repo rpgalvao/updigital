@@ -63,5 +63,57 @@ class PermissoesSeeds extends Seeder
         		'descricao' => 'Deletar Usuários'
         	]);
         }
+
+        if(!Permissao::where('nome', '=', 'papel_listar')->count()){
+            Permissao::create([
+                'nome' => 'papel_listar',
+                'descricao' => 'Listar os Cargos'
+            ]);
+        }else{
+            $permissao = Permissao::where('nome', '=', 'papel_listar')->first();
+            $permissao->update([
+                'nome' => 'papel_listar',
+                'descricao' => 'Listar os Cargos'
+            ]);
+        }
+
+        if(!Permissao::where('nome', '=', 'papel_adicionar')->count()){
+            Permissao::create([
+                'nome' => 'papel_adicionar',
+                'descricao' => 'Adiciona um Cargo'
+            ]);
+        }else{
+            $permissao = Permissao::where('nome', '=', 'papel_adicionar')->first();
+            $permissao->update([
+                'nome' => 'papel_adicionar',
+                'descricao' => 'Adiciona um Cargo'
+            ]);
+        }
+
+        if(!Permissao::where('nome', '=', 'papel_editar')->count()){
+            Permissao::create([
+                'nome' => 'papel_editar',
+                'descricao' => 'Edita um Cargo'
+            ]);
+        }else{
+            $permissao = Permissao::where('nome', '=', 'papel_editar')->first();
+            $permissao->update([
+                'nome' => 'papel_editar',
+                'descricao' => 'Edita um Cargo'
+            ]);
+        }
+
+        if(!Permissao::where('nome', '=', 'papel_deletar')->count()){
+            Permissao::create([
+                'nome' => 'papel_deletar',
+                'descricao' => 'Deleta um Cargo'
+            ]);
+        }else{
+            $permissao = Permissao::where('nome', '=', 'papel_deletar')->first();
+            $permissao->update([
+                'nome' => 'papel_deletar',
+                'descricao' => 'Deleta um Cargo'
+            ]);
+        }
     }
 }
