@@ -71,7 +71,7 @@ class GaleriaController extends Controller
         $registro->order = $dados['order'];
         $file = $request->file('imagem');
         if($file){
-            $rand = $rand(11111, 99999);
+            $rand = rand(11111, 99999);
             $diretorio = "img/imoveis/".str_slug($imovel->titulo, '-')."/";
             $ext = $file->guessClientExtension();
             $nomeArquivo = "_img_".$rand.".".$ext;

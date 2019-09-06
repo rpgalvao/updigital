@@ -90,7 +90,7 @@ class ImovelController extends Controller
         $registro->tipo_id = $dados['tipo_id'];
         $file = $request->file('imagem');
         if($file){
-            $rand = $rand(11111, 99999);
+            $rand = rand(11111, 99999);
             $diretorio = "img/imoveis/".str_slug($dados['titulo'], '-')."/";
             $ext = $file->guessClientExtension();
             $nomeArquivo = "_img_".$rand.".".$ext;
