@@ -6,9 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="{{ config('seo.autor') }}">
         <meta name="keywords" content="{{ config('seo.keywords') }}">
-        <meta name="description" content="{{ config('seo.descricao') }}">
+        <meta name="description" content="{{ isset($seo['descricao']) ? $seo['descricao'] : config('seo.descricao') }}">
 
-        <title>{{ config('seo.titulo') }}</title>
+        <title>{{ isset($seo['titulo']) ? $seo['titulo'] : config('seo.titulo') }}</title>
+        
+        <!-- Twitter Card data -->
+        <meta name="twitter:card" value="summary">
+
+        <!-- Open Graph data -->
+        <meta property="og:title" content="{{ isset($seo['titulo']) ? $seo['titulo'] : config('seo.titulo') }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ isset($seo['url']) ? $seo['url'] : config('app.url') }}" />
+        <meta property="og:image" content="{{ isset($seo['imagem']) ? $seo['imagem'] : config('seo.imagem') }}" />
+        <meta property="og:description" content="{{ isset($seo['descricao']) ? $seo['descricao'] : config('seo.descricao') }}" />
+
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
