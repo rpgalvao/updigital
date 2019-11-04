@@ -1,5 +1,5 @@
 <nav>
-    <div class="nav-wrapper upcolor" style="height: 200px">
+    <div class="nav-wrapper upcolor" style="height: 70px">
         <div class="container logo">
             
             <a href="{{ route('site.home') }}" class="brand-logo"><img src="{{ asset('img/logo_alt_up.png') }}" alt="logo site" height="65"><span>Imobiliária Digital</span></a>
